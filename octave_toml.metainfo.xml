@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2024-2025 Yu Hongbo <yuhongbo@member.fsf.org>, 
+  CNOCTAVE <cnoctave@qq.com>
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.  This file is offered as-is,
+without any warranty.
+-->
+<component type="addon">
+  <id>octave_toml11</id>
+  <extends>www.octave.org-octave.desktop</extends>
+  <name>octave_toml11</name>
+  <summary>Octave Use toml11 to Process TOML</summary>
+  <description>
+    <p>The octave_toml11 package provides functions for process
+      TOML.</p>
+  </description>
+    <keywords>
+    <keyword>TOML</keyword>
+    <keyword>process</keyword>
+    <keyword>find</keyword>
+    <keyword>judge</keyword>
+  </keywords>
+  <url type="homepage">https://github.com/CNOCTAVE/octave_toml11</url>
+  <url type="bugtracker">https://github.com/CNOCTAVE/octave_toml11/issues</url>
+  <url type="document">https://cnoctave.github.io/octave_toml11/index.html</url>
+  <project_license>GPL-3.0+</project_license>
+  <developer_name>various authors</developer_name>
+  <update_contact>cnoctave@qq.com</update_contact>
+  <metadata_license>FSFAP</metadata_license>
+</component>

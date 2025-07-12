@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+Copyright 2024-2025 Yu Hongbo <yuhongbo@member.fsf.org>, 
+  CNOCTAVE <cnoctave@qq.com>
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.  This file is offered as-is,
+without any warranty.
+-->
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width">
+    <meta name="theme-color" content="#00B4FF">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="msapplication-TileImage" content="favicon.ico">
+    <meta name="msapplication-TileColor" content="#000000">
+    <meta name="apple-mobile-web-app-title" content="octave_toml11文档">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" type="text/css">
+    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@^4.0.0/animate.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.17.0/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+    <link href="main.css" rel="stylesheet" type="text/css">
+    <title>octave_toml11文档</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <meta name="title" content="octave_toml11文档" data-qmeta="title">
+    <meta property="og:title" content="octave_toml11文档" data-qmeta="ogTitle">
+    <meta name="twitter:title" content="octave_toml11文档" data-qmeta="twitterTitle">
+    <meta name="description" content="Octave中文网是一个面向中文Octave开发者的交流平台，拥有中文Octave文档、中文Octave论坛和中文Octave新闻等特色。"
+        data-qmeta="description">
+    <meta property="og:description" content="Octave中文网是一个面向中文Octave开发者的交流平台，拥有中文Octave文档、中文Octave论坛和中文Octave新闻等特色。"
+        data-qmeta="ogDesc">
+    <meta name="twitter:description" content="Octave中文网是一个面向中文Octave开发者的交流平台，拥有中文Octave文档、中文Octave论坛和中文Octave新闻等特色。"
+        data-qmeta="twitterDesc">
+</head>
+
+<body>
+    <div id="q-app">
+        <q-layout view="hHh LpR fFf">
+            <q-header elevated class="bg-primary text-white">
+                <q-toolbar class="bg-primary text-white q-ny-md shadow-2">
+                    <q-btn stretch flat label="Octave中文网" @click="goTo('https://cnoctave.cn')"></q-btn>
+                    <q-separator dark vertical></q-separator>
+                    <q-btn stretch flat label="octave_toml11文档" @click="scrollToTop()"></q-btn>
+                    <q-separator dark vertical></q-separator>
+                    <q-space></q-space>
+                    <q-separator dark vertical></q-separator>
+                    <q-btn-dropdown stretch flat icon="translate" label="切换文档语言">
+                      <q-list>
+                        <q-item clickable v-close-popup @click="goTo('index.html')">
+                          <q-item-section>
+                            <q-item-label>zh-CN 简体中文</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                      </q-list>
+                    </q-btn-dropdown>
+                    <q-separator dark vertical></q-separator>
+                    <q-btn stretch flat label="中文版Octave文档" @click="goTo('https://docs.cnoctave.cn')"></q-btn>
+                    <q-separator dark vertical></q-separator>
+                    <q-btn stretch flat label="学术交流论坛" @click="goTo('https://forum.cnoctave.cn')"></q-btn>
+                    <q-separator dark vertical></q-separator>
+                    <q-btn stretch flat label="新闻" @click="goTo('https://octave.org/news.html')"></q-btn>
+                    <q-separator dark vertical></q-separator>
+                    <q-btn stretch flat label="使用方法" @click="goTo('https://wiki.octave.org/Using_Octave')"></q-btn>
+                    <q-separator dark vertical></q-separator>
+                    <q-btn stretch flat label="免费下载" @click="goTo('https://octave.org/download')"></q-btn>
+                </q-toolbar>
+            </q-header>
+            <q-drawer class="bg-primary" show-if-above v-model="leftDrawerOpen" side="left" bordered elevated>
+                <q-list class="title1 text-white bg-primary">
+                    <q-item clickable v-ripple @click="goToID('#homepage')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            项目首页
+                        </q-item-section>
+                    </q-item>
+                    <q-item clickable v-ripple @click="goToID('#repo_install')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            软件源安装
+                        </q-item-section>
+                    </q-item>
+                    <q-item clickable v-ripple @click="goToID('#online_install')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            在线安装
+                        </q-item-section>
+                    </q-item>
+                    <q-item clickable v-ripple @click="goToID('#source_code_install')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            源码安装
+                        </q-item-section>
+                    </q-item>
+                    <q-item clickable v-ripple @click="goToID('#how_to_use')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            如何使用
+                        </q-item-section>
+                    </q-item>
+                    <q-item clickable v-ripple @click="goToID('#dependencies')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            依赖库
+                        </q-item-section>
+                    </q-item>
+                    <q-item clickable v-ripple @click="goToID('#function_usage')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            函数用法
+                        </q-item-section>
+                    </q-item>
+                    <q-item clickable v-ripple @click="goToID('#common_examples')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            常见用例
+                        </q-item-section>
+                    </q-item>
+                    <q-item clickable v-ripple @click="goToID('#references')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            引用octave_toml11
+                        </q-item-section>
+                    </q-item>
+                </q-list>
+            </q-drawer>
+
+            <q-page-container>
+                <div style="position: relative;">
+                    <q-img src="banner0.png" spinner-color="white" style="width: 100%; height: 300px;"></q-img>
+                    <div class="q-mx-md rainbow-text"
+                        style="line-height: 300px; font-size: 100px; position: absolute; left: 0%; top: 0%;">octave_toml11文档
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="main">
+                        <div class="text-h5 q-ma-md text-red-10">欢迎广大开发者将此文档翻译为其他语言。</div>
+                        <q-btn id="homepage" class="title1 text-white bg-primary" stretch flat
+                            label="项目首页：https://github.com/CNOCTAVE/octave_toml11" @click="goTo('https://github.com/CNOCTAVE/octave_toml11')"></q-btn>
+                        <q-separator></q-separator>
+                        <div class="text-h5 q-ma-md text-red-10"><q-icon name="error" size="2em"></q-icon>用户须知：toml11会导致很多segfault（段错误），而且不稳定，因此octave_toml11也是这样。对于octave_toml11给用户带来的不便，作者深表歉意，并表示如果以后有更好用的toml库，作者将弃用此软件包。</div>
+                        <q-separator></q-separator>
+                        <div id="repo_install" class="title1 q-ma-md text-primary">软件源安装</div>
+                        <p class="q-ma-md">octave_toml11可以通过Octave软件源安装。</p>
+                        <div class="text-h5 q-ma-md text-red-10">通过Octave软件源安装octave_toml11，代码如下：</div>
+                        <p class="q-ma-md">>> pkg install -forge octave_toml11</p>
+                        <q-separator></q-separator>
+                        <div id="online_install" class="title1 q-ma-md text-primary">在线安装</div>
+                        <p class="q-ma-md">octave_toml11可以在线安装。</p>
+                        <div class="text-h5 q-ma-md text-red-10">在线安装octave_toml11，代码如下：</div>
+                        <p class="q-ma-md">>> pkg install 'https://github.com/CNOCTAVE/octave_toml11/releases/download/0.1.0/octave_toml11.tar.gz'</p>
+                        <q-separator></q-separator>
+                        <div id="source_code_install" class="title1 q-ma-md text-primary">源码安装</div>
+                        <p class="q-ma-md">octave_toml11可以直接使用tar包安装。</p>
+                        <div class="text-h5 q-ma-md text-red-10">
+                            假设你下载的源码包名为octave_toml11.tar.gz，源码安装的代码如下：</div>
+                        <p class="q-ma-md">>> pkg install octave_toml11.tar.gz -local</p>
+                        <q-separator></q-separator>
+                        <div id="how_to_use" class="title1 q-ma-md text-primary">如何使用</div>
+                        <div class="text-h5 q-ma-md text-red-10">在安装后，加载octave_toml11即可使用，代码如下：</div>
+                        <p class="q-ma-md">>> pkg load octave_toml11</p>
+                        <q-separator></q-separator>
+                        <div id="dependencies" class="title1 q-ma-md text-primary">依赖库</div>
+                        <div class="text-h5 q-ma-md text-red-10">不同的Linux发行版有不同的依赖库名。</div>
+                        <div class="text-h5 q-ma-md text-red-10">Fedora：</div>
+                        <p class="q-ma-md">$ sudo dnf install libtoml11-devel</p>
+                        <div class="text-h5 q-ma-md text-red-10">在其他的Linux发行版上的命令有所不同。欢迎广大开发者补充。
+                        </div>
+                        <q-separator></q-separator>
+                        <div id="function_usage" class="title1 q-ma-md text-primary">函数用法</div>
+                        <div class="text-h5 q-ma-md text-red-10">toml_find_by_idx</div>
+                        <p class="q-ma-md">Loadable Function: OV = toml_find_by_idx(TOML_DATA, IDX)</p>
+                        <p class="q-ma-md">Loadable Function: OV = toml_find_by_idx(TOML_DATA, IDX, SEMVER)</p>
+                        <p class="q-ma-md">输入TOML字符串TOML_DATA和下标IDX，可选输入版本号SEMVER。</p>
+                        <p class="q-ma-md">返回下标IDX处的数据OV。</p>
+                        <p class="q-ma-md">默认版本号为[1, 0, 0]（即TOML 1.0.0）。</p>
+                        <p class="q-ma-md">版本号是一个三元矩阵。</p>
+                        <p class="q-ma-md">如果版本号大于等于TOML 1.1.0，则支持TOML 1.1.0的特性。</p>
+                        <q-separator></q-separator>
+                        <div class="text-h5 q-ma-md text-red-10">toml_find_by_key</div>
+                        <p class="q-ma-md">Loadable Function: OV = toml_find_by_key(TOML_DATA, KEY)</p>
+                        <p class="q-ma-md">Loadable Function: OV = toml_find_by_key(TOML_DATA, KEY, SEMVER)</p>
+                        <p class="q-ma-md">输入TOML字符串TOML_DATA和键KEY，可选输入版本号SEMVER。</p>
+                        <p class="q-ma-md">返回键KEY处的数据OV。</p>
+                        <p class="q-ma-md">默认版本号为[1, 0, 0]（即TOML 1.0.0）。</p>
+                        <p class="q-ma-md">版本号是一个三元矩阵。</p>
+                        <p class="q-ma-md">如果版本号大于等于TOML 1.1.0，则支持TOML 1.1.0的特性。</p>
+                        <q-separator></q-separator>
+                        <div class="text-h5 q-ma-md text-red-10">toml_format</div>
+                        <p class="q-ma-md">Loadable Function: OV = toml_format(TOML_DATA)</p>
+                        <p class="q-ma-md">Loadable Function: OV = toml_format(TOML_DATA, SEMVER)</p>
+                        <p class="q-ma-md">输入TOML字符串TOML_DATA，可选输入版本号SEMVER。</p>
+                        <p class="q-ma-md">返回格式化之后的数据OV。</p>
+                        <p class="q-ma-md">默认版本号为[1, 0, 0]（即TOML 1.0.0）。</p>
+                        <p class="q-ma-md">版本号是一个三元矩阵。</p>
+                        <p class="q-ma-md">如果版本号大于等于TOML 1.1.0，则支持TOML 1.1.0的特性。</p>
+                        <q-separator></q-separator>
+                        <div class="text-h5 q-ma-md text-red-10">toml_isa</div>
+                        <p class="q-ma-md">Loadable Function: OV = toml_isa(TOML_DATA, KEY, TYPE)</p>
+                        <p class="q-ma-md">Loadable Function: OV = toml_isa(TOML_DATA, KEY, TYPE, SEMVER)</p>
+                        <p class="q-ma-md">输入TOML字符串TOML_DATA，键KEY和类型TYPE，可选输入版本号SEMVER。</p>
+                        <p class="q-ma-md">判断键KEY处的数据是否属于类型TYPE（返回true或false）。</p>
+                        <p class="q-ma-md">支持判断的类型如下：</p>
+                        <p class="q-ma-md">类型   含义</p>
+                        <p class="q-ma-md">empty    判断键KEY处的数据是否为空</p>
+                        <p class="q-ma-md">boolean    判断键KEY处的数据是否属于类型boolean</p>
+                        <p class="q-ma-md">integer    判断键KEY处的数据是否属于类型integer</p>
+                        <p class="q-ma-md">floating    判断键KEY处的数据是否属于类型float</p>
+                        <p class="q-ma-md">string    判断键KEY处的数据是否属于类型string</p>
+                        <p class="q-ma-md">offset_datetime    判断键KEY处的数据是否属于类型offset datetime</p>
+                        <p class="q-ma-md">local_datetime    判断键KEY处的数据是否属于类型local datetime</p>
+                        <p class="q-ma-md">local_date    判断键KEY处的数据是否属于类型local date</p>
+                        <p class="q-ma-md">local_time    判断键KEY处的数据是否属于类型local time</p>
+                        <p class="q-ma-md">array    判断键KEY处的数据是否属于类型array</p>
+                        <p class="q-ma-md">table    判断键KEY处的数据是否属于类型table</p>
+                        <p class="q-ma-md">默认版本号为[1, 0, 0]（即TOML 1.0.0）。</p>
+                        <p class="q-ma-md">版本号是一个三元矩阵。</p>
+                        <p class="q-ma-md">如果版本号大于等于TOML 1.1.0，则支持TOML 1.1.0的特性。</p>
+                        <q-separator></q-separator>
+                        <div id="common_examples" class="title1 q-ma-md text-primary">TOML示例</div>
+                        <p class="q-ma-md">>> toml = '[a]\nname="A"\n[a.b]\nname="B"\n[a.b.c]\nname="C"\n[a.b.c.d]\nname="D"';</p>
+                        <q-separator></q-separator>
+                        <div id="common_examples" class="title1 q-ma-md text-primary">常见用例</div>
+                        <div class="text-h5 q-ma-md text-red-10">返回下标2处的数据，代码如下：</div>
+                        <p class="q-ma-md">>> ov = toml_find_by_idx(a, 2);</p>
+                        <div class="text-h5 q-ma-md text-red-10">返回键a处的数据，代码如下：</div>
+                        <p class="q-ma-md">>> ov = toml_find_by_key(a, 'a');</p>
+                        <div class="text-h5 q-ma-md text-red-10">格式化TOML，代码如下：</div>
+                        <p class="q-ma-md">>> ov = toml_format(a);</p>
+                        <div class="text-h5 q-ma-md text-red-10">判断键a处的数据是否属于类型table，代码如下：</div>
+                        <p class="q-ma-md">>> ov = toml_isa(a, 'a', 'table');</p>
+                        <q-separator></q-separator>
+                        <div id="references" class="title1 q-ma-md text-primary">引用octave_toml11</div>
+                        <div class="text-h5 q-ma-md text-red-10">如果你在学术研究中涉及octave_toml11，那么可以按需引用以下内容。</div>
+                        <div class="text-h5 q-ma-md text-red-10">octave_toml11源码(BibTeX)</div>
+                        <p class="q-ma-md">@misc{CNOCTAVE2025,
+                            author = {Yu Hongbo, },
+                            title = {octave_toml11},
+                            year = {2025},
+                            howpublished = {\url{https://github.com/CNOCTAVE/octave_toml11}},
+                          }</p>
+                        <div class="text-h5 q-ma-md text-red-10">octave_toml11文档(BibTeX)</div>
+                        <p class="q-ma-md">@techreport{CNOCTAVE2025,
+                            author = {Yu Hongbo, },
+                            title = {octave_toml11 Document},
+                            institution = {BA DU XIN SHANG},
+                            year = {2025},
+                            number = {12},
+                            month = {7},
+                            url = {https://cnoctave.github.io/octave_toml11/index.html},
+                            urldate = {2025-07-12},
+                          }</p>
+                    </div>
+                </div>
+                <q-toolbar class="bg-grey-8 text-white q-my-md shadow-2">
+                    <q-btn-dropdown stretch flat label="版权所有 ©">
+                      <q-list>
+                        <q-item clickable v-close-popup @click="goTo('http://cnoctave.cn')">
+                          <q-item-section>
+                            <q-item-label>© 2024-2025 CNOCTAVE</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                        <q-item clickable v-close-popup @click="goTo('https://orcid.org/0009-0007-9436-4161')">
+                          <q-item-section>
+                            <q-item-label>© 2024-2025 Yu Hongbo</q-item-label>
+                          </q-item-section>
+                        </q-item>
+                      </q-list>
+                    </q-btn-dropdown>
+                    <q-separator dark vertical></q-separator>
+                    <q-btn stretch flat label="此文档受Creative Commons Attribution-NoDerivatives 4.0 International License协议保护。" 
+                    @click="goTo('https://creativecommons.org/licenses/by-nd/4.0/')"></q-btn>
+                    <q-separator dark vertical></q-separator>
+                    <q-btn stretch flat label="下载此文档的源码" 
+                    @click="goTo('https://github.com/CNOCTAVE/octave_toml11')"></q-btn>
+                </q-toolbar>
+            </q-page-container>
+
+        </q-layout>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.0/dist/quasar.umd.prod.js"></script>
+    <script>
+
+        const App = {
+            data() {
+                return {
+                    scrollToTop() {
+                        window.scrollTo(0, 0);
+                    },
+                    goTo(target) {
+                        window.open(target, '_blank');
+                    },
+                    goToID(target) {
+                        window.open(target, '_self');
+                    },
+                    leftDrawerOpen: true,
+                };
+            },
+        };
+        const app = Vue.createApp(App);
+
+        app.use(Quasar)
+        app.mount('#q-app')
+    </script>
+</body>
+
+</html>

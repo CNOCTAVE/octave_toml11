@@ -1,0 +1,11 @@
+Name: octave_toml11
+Version: 0.1.0
+Date: 2025-07-12
+Author: various authors
+Maintainer: Yu Hongbo <yuhongbo@member.fsf.org>, CNOCTAVE <cnoctave@qq.com>
+Title: Octave toml11
+Description: The octave_toml11 package provides functions for process
+ TOML.
+Depends: octave (>= 8.0.0)
+License: GPLv3+
+Url: https://github.com/CNOCTAVE/octave_toml11

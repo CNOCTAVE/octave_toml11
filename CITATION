@@ -1,0 +1,7 @@
+引用octave_toml11
+如果你在学术研究中涉及octave_toml11，那么可以按需引用以下内容。
+octave_toml11源码(BibTeX)
+@misc{CNOCTAVE2025, author = {Yu Hongbo, }, title = {octave_toml11}, year = {2025}, howpublished = {\url{https://github.com/CNOCTAVE/octave_toml11}}, }
+
+octave_toml11文档(BibTeX)
+@techreport{CNOCTAVE2025, author = {Yu Hongbo, }, title = {octave_toml11 Document}, institution = {BA DU XIN SHANG}, year = {2025}, number = {12}, month = {7}, url = {https://cnoctave.github.io/octave_toml11/index.html}, urldate = {2025-07-12}, }
