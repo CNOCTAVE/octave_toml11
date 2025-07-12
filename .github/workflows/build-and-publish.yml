@@ -19,6 +19,6 @@ jobs:
       # uncomment this on demand
       - run: sudo chmod a+x octave_toml11/src/configure
       # uncomment this on demand
-      - run: sudo chmod -R a+x octave_toml11/inst
+      # - run: sudo chmod -R a+x octave_toml11/inst
       - run: tar --warning=no-file-changed --exclude='octave_toml11/.git' --exclude='octave_toml11/.github' -czvf octave_toml11.tar.gz octave_toml11
       - run: gh release upload 0.1.0 octave_toml11.tar.gz --repo $GITHUB_REPOSITORY
