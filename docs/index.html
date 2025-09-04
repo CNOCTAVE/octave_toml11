@@ -130,6 +130,14 @@ without any warranty.
                             函数用法
                         </q-item-section>
                     </q-item>
+                    <q-item clickable v-ripple @click="goToID('#toml_example')">
+                        <q-item-section avatar>
+                            <q-icon name="help" />
+                        </q-item-section>
+                        <q-item-section>
+                            TOML示例
+                        </q-item-section>
+                    </q-item>
                     <q-item clickable v-ripple @click="goToID('#common_examples')">
                         <q-item-section avatar>
                             <q-icon name="help" />
@@ -163,7 +171,7 @@ without any warranty.
                         <q-btn id="homepage" class="title1 text-white bg-primary" stretch flat
                             label="项目首页：https://github.com/CNOCTAVE/octave_toml11" @click="goTo('https://github.com/CNOCTAVE/octave_toml11')"></q-btn>
                         <q-separator></q-separator>
-                        <div class="text-h5 q-ma-md text-red-10"><q-icon name="error" size="2em"></q-icon>用户须知：toml11会导致很多segfault（段错误），而且不稳定，因此octave_toml11也是这样。对于octave_toml11给用户带来的不便，作者深表歉意，并表示如果以后有更好用的toml库，作者将弃用此软件包。</div>
+                        <div class="text-h5 q-ma-md text-red-10"><q-icon name="error" size="2em"></q-icon>用户须知：<a href="https://github.com/ToruNiina/toml11">toml11</a>会导致很多segfault（段错误），而且不稳定，因此octave_toml11也是这样。对于octave_toml11给用户带来的不便，作者深表歉意，并表示如果以后有更好用的toml库，作者将弃用此软件包。</div>
                         <q-separator></q-separator>
                         <div id="repo_install" class="title1 q-ma-md text-primary">软件源安装</div>
                         <p class="q-ma-md">octave_toml11可以通过Octave软件源安装。</p>
@@ -188,7 +196,7 @@ without any warranty.
                         <div id="dependencies" class="title1 q-ma-md text-primary">依赖库</div>
                         <div class="text-h5 q-ma-md text-red-10">不同的Linux发行版有不同的依赖库名。</div>
                         <div class="text-h5 q-ma-md text-red-10">Fedora：</div>
-                        <p class="q-ma-md">$ sudo dnf install libtoml11-devel</p>
+                        <p class="q-ma-md">$ sudo dnf install toml11-devel</p>
                         <div class="text-h5 q-ma-md text-red-10">在其他的Linux发行版上的命令有所不同。欢迎广大开发者补充。
                         </div>
                         <q-separator></q-separator>
@@ -242,18 +250,18 @@ without any warranty.
                         <p class="q-ma-md">版本号是一个三元矩阵。</p>
                         <p class="q-ma-md">如果版本号大于等于TOML 1.1.0，则支持TOML 1.1.0的特性。</p>
                         <q-separator></q-separator>
-                        <div id="common_examples" class="title1 q-ma-md text-primary">TOML示例</div>
+                        <div id="toml_example" class="title1 q-ma-md text-primary">TOML示例</div>
                         <p class="q-ma-md">>> toml = '[a]\nname="A"\n[a.b]\nname="B"\n[a.b.c]\nname="C"\n[a.b.c.d]\nname="D"';</p>
                         <q-separator></q-separator>
                         <div id="common_examples" class="title1 q-ma-md text-primary">常见用例</div>
                         <div class="text-h5 q-ma-md text-red-10">返回下标2处的数据，代码如下：</div>
-                        <p class="q-ma-md">>> ov = toml_find_by_idx(a, 2);</p>
+                        <p class="q-ma-md">>> ov = toml_find_by_idx(toml, 2);</p>
                         <div class="text-h5 q-ma-md text-red-10">返回键a处的数据，代码如下：</div>
-                        <p class="q-ma-md">>> ov = toml_find_by_key(a, 'a');</p>
+                        <p class="q-ma-md">>> ov = toml_find_by_key(toml, 'a');</p>
                         <div class="text-h5 q-ma-md text-red-10">格式化TOML，代码如下：</div>
-                        <p class="q-ma-md">>> ov = toml_format(a);</p>
+                        <p class="q-ma-md">>> ov = toml_format(toml);</p>
                         <div class="text-h5 q-ma-md text-red-10">判断键a处的数据是否属于类型table，代码如下：</div>
-                        <p class="q-ma-md">>> ov = toml_isa(a, 'a', 'table');</p>
+                        <p class="q-ma-md">>> ov = toml_isa(toml, 'a', 'table');</p>
                         <q-separator></q-separator>
                         <div id="references" class="title1 q-ma-md text-primary">引用octave_toml11</div>
                         <div class="text-h5 q-ma-md text-red-10">如果你在学术研究中涉及octave_toml11，那么可以按需引用以下内容。</div>
